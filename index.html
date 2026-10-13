@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCheck - Beranda</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Tailwind (harus setelah CDN) -->
+    <script src="js/tailwind-config.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS Kustom -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 glass-card shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="location.href='index.html'">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+                        <i class="fa-solid font-bold text-xl fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Nutri<span class="text-emerald-600">Check</span></span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Tabs (Numbered Pages) -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="index.html" id="nav-beranda" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-emerald-600 bg-emerald-50 border border-emerald-200">
+                        Beranda
+                    </a>
+                    <a href="kalkulator.html" id="nav-kalkulator" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Kalkulator BMI
+                    </a>
+                    <a href="hasil.html" id="nav-hasil" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Hasil BMI
+                    </a>
+                    <a href="panduan.html" id="nav-panduan" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Panduan BMI
+                    </a>
+                </nav>
+
+                <!-- Action Button Desktop -->
+                <div class="hidden md:flex items-center">
+                    <a href="kalkulator.html" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95">
+                        <i class="fa-solid fa-calculator mr-2"></i> Hitung Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-emerald-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2 shadow-lg" id="mobile-menu">
+            <a href="index.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-emerald-600 bg-emerald-50 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Beranda
+            </a>
+            <a href="kalkulator.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Kalkulator BMI
+            </a>
+            <a href="hasil.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Hasil BMI
+            </a>
+            <a href="panduan.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Panduan BMI
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="page-beranda" class="tab-page active">
+            <div class="gradient-bg pt-12 pb-20 md:pt-16 md:pb-24 relative overflow-hidden">
+                <!-- Background Decorative Circles -->
+                <div class="absolute -top-10 -right-10 w-72 h-72 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute top-1/2 -left-20 w-80 h-80 bg-teal-200/40 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                        <!-- Left Column Text -->
+                        <div class="lg:col-span-7 text-center lg:text-left">
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                                Pantau Berat Badan Ideal & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Kesehatan Gizi</span> Anda
+                            </h1>
+                            <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                NutriCheck membantu Anda menghitung Indeks Massa Tubuh (BMI) secara akurat, presisi, dan teruji. Dapatkan rekomendasi kesehatan personal berdasarkan standar Kementerian Kesehatan RI.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <a href="kalkulator.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-2xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/30 hover:-translate-y-0.5 transition-all">
+                                    <i class="fa-solid fa-calculator mr-2"></i> Menuju Kalkulator BMI
+                                </a>
+                                <a href="panduan.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-2xl text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all">
+                                    Pelajari Standar BMI <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                                </a>
+                            </div>
+
+                            <!-- Mini Feature Icons -->
+                            <div class="mt-12 pt-8 border-t border-slate-200/60 grid grid-cols-2 gap-4 max-w-sm mx-auto lg:mx-0">
+                                <div class="text-center lg:text-left">
+                                    <p class="text-2xl font-extrabold text-slate-900">100%</p>
+                                    <p class="text-xs text-slate-500 font-medium">Gratis & Cepat</p>
+                                </div>
+                                <div class="text-center lg:text-left">
+                                    <p class="text-2xl font-extrabold text-slate-900">Visual</p>
+                                    <p class="text-xs text-slate-500 font-medium">Grafik Indikator</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column Visual Preview Card -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div class="relative w-full max-w-md">
+                                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 relative z-10">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 text-xl font-bold">
+                                                <i class="fa-solid fa-user-check"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold text-slate-800">Status Gizi Ideal</h3>
+                                                <p class="text-xs text-slate-400">Pemeriksaan Instan</p>
+                                            </div>
+                                        </div>
+                                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-full">Normal</span>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex justify-between items-center">
+                                            <div class="flex items-center space-x-3">
+                                                <i class="fa-solid fa-weight-scale text-emerald-600 text-lg"></i>
+                                                <span class="text-sm font-medium text-slate-600">Rentang BMI Normal</span>
+                                            </div>
+                                            <span class="font-bold text-slate-800">18.5 - 25.0</span>
+                                        </div>
+
+                                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex justify-between items-center">
+                                            <div class="flex items-center space-x-3">
+                                                <i class="fa-solid fa-apple-whole text-teal-600 text-lg"></i>
+                                                <span class="text-sm font-medium text-slate-600">Kebutuhan Hidrasi</span>
+                                            </div>
+                                            <span class="font-bold text-slate-800">2 - 2.5 L/hari</span>
+                                        </div>
+
+                                        <div class="p-4 rounded-2xl bg-emerald-500 text-white flex items-center justify-between shadow-lg shadow-emerald-500/20">
+                                            <div class="flex items-center space-x-3">
+                                                <i class="fa-solid fa-shield-heart text-2xl"></i>
+                                                <div>
+                                                    <p class="text-xs text-emerald-100">Solusi Gizi</p>
+                                                    <p class="font-bold text-sm">Hasil Personal & Akurat</p>
+                                                </div>
+                                            </div>
+                                            <i class="fa-solid fa-circle-check text-xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-tr from-emerald-400 to-teal-300 rounded-3xl -z-10 opacity-30 blur-lg"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-white pt-12 pb-8 border-t border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-4">
+
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight">Nutri<span class="text-emerald-400">Check</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed mb-4">
+                        Aplikasi kalkulator Indeks Massa Tubuh (BMI) interaktif untuk memantau status gizi secara praktis dan terstruktur.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Halaman Web</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
+                        <li><a href="kalkulator.html" class="hover:text-emerald-400 transition-colors">Kalkulator BMI</a></li>
+                        <li><a href="hasil.html" class="hover:text-emerald-400 transition-colors">Hasil BMI</a></li>
+                        <li><a href="panduan.html" class="hover:text-emerald-400 transition-colors">Panduan BMI</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Catatan Medis</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Hasil kalkulasi ini bertindak sebagai penilai awal gizi mandiri dan bukan sebagai pengganti saran klinis dokter profesional.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/common.js"></script>
+</body>
+</html>
