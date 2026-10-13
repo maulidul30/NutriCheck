@@ -1,76 +1,74 @@
-# NutriCheck — Kerangka & Halaman 1 (Beranda)
+# NutriCheck
 
-Aplikasi cek status gizi (BMI), dikerjakan 4 orang, satu file HTML per halaman.
+Aplikasi web untuk menghitung Indeks Massa Tubuh (BMI) dan mengetahui status gizi, lengkap dengan rekomendasi kesehatan dan estimasi berat badan ideal. Kategori BMI mengacu pada standar Kementerian Kesehatan RI.
 
-## Struktur
+## Halaman
+
+| Halaman | File | Fungsi |
+|---|---|---|
+| Beranda | `index.html` | Pengenalan aplikasi dan akses cepat ke kalkulator & panduan |
+| Kalkulator BMI | `kalkulator.html` | Form jenis kelamin, berat badan, tinggi badan, dan usia |
+| Hasil BMI | `hasil.html` | Skor BMI, kategori status gizi, indikator posisi, rekomendasi, dan rentang berat ideal |
+| Panduan BMI | `panduan.html` | Rumus BMI, tabel kategori, dan tips hidup sehat |
+
+## Struktur Folder
 
 ```
 nutricheck/
-├── index.html              ← Halaman 1: Beranda  (SUDAH JADI)
-├── kalkulator.html         ← Halaman 2: Kalkulator BMI  (belum)
-├── hasil.html              ← Halaman 3: Hasil BMI       (belum)
-├── panduan.html            ← Halaman 4: Panduan BMI     (belum)
-├── css/style.css           ← CSS bersama
+├── index.html
+├── kalkulator.html
+├── hasil.html
+├── panduan.html
+├── css/
+│   └── style.css            ← gradient, glass-card, animasi, gaya cetak
 └── js/
-    ├── tailwind-config.js  ← konfigurasi warna/font Tailwind (bersama)
-    └── common.js           ← menu mobile (bersama)
+    ├── tailwind-config.js   ← konfigurasi warna & font Tailwind
+    ├── common.js            ← menu mobile
+    ├── kalkulator.js        ← validasi form & penyimpanan data
+    └── hasil.js             ← perhitungan & tampilan hasil
 ```
 
-## Aturan bersama (agar tampilan seragam)
+## Teknologi
 
-1. **Nama file harus persis** seperti di atas. Navbar & tombol di Beranda
-   sudah menautkan ke `kalkulator.html`, `hasil.html`, `panduan.html`.
-2. Mulai dengan menyalin `index.html` dan ganti namanya (mis.
-   `kalkulator.html`). `<head>`, navbar, dan footer sudah ada. Ganti
-   `<title>`, lalu **hapus seluruh isi `<section id="page-beranda"> ... </section>`**
-   dan tulis isi halamanmu di sana (ganti id-nya, mis. `page-kalkulator`).
-   Pertahankan `class="tab-page active ..."` pada `<section>` agar halaman tampil.
-3. Pakai Tailwind CSS (CDN) dengan palet **emerald/teal** + font **Inter**,
-   seperti di `index.html`.
-4. Satu halaman = satu file JS sendiri di folder `js/`
-   (mis. `js/kalkulator.js`, `js/hasil.js`), dipanggil di akhir `<body>`
-   setelah `js/common.js`.
-5. Jangan mengubah file bersama (`style.css`, `tailwind-config.js`,
-   `common.js`, navbar, footer) tanpa kabari tim. Kalau navbar/footer
-   berubah, ubah di keempat halaman.
-6. Tandai menu aktif di navbar pada halaman masing-masing:
-   - **Desktop:** pada link `<a ... id="nav-beranda">` ganti class
-     `text-emerald-600 bg-emerald-50 border border-emerald-200` menjadi
-     `text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50`, lalu
-     pasang class aktif (yang lama) di link halamanmu.
-   - **Mobile:** pada link `index.html` di menu mobile ganti
-     `text-emerald-600 bg-emerald-50` menjadi `text-slate-700`, lalu pasang
-     class aktif itu di link halamanmu.
+- HTML, CSS, JavaScript (tanpa framework & tanpa proses build)
+- [Tailwind CSS](https://tailwindcss.com) via CDN
+- [Font Awesome 6](https://fontawesome.com) untuk ikon
+- Font [Inter](https://fonts.google.com/specimen/Inter) dari Google Fonts
 
-## Pembagian
+Membutuhkan koneksi internet agar CDN Tailwind, Font Awesome, dan Google Fonts termuat.
 
-| Halaman | File | Penanggung jawab |
-|---|---|---|
-| 1. Beranda + kerangka bersama | `index.html`, `css/`, `js/common.js` | ... |
-| 2. Kalkulator BMI | `kalkulator.html`, `js/kalkulator.js` | ... |
-| 3. Hasil BMI | `hasil.html`, `js/hasil.js` | ... |
-| 4. Panduan BMI | `panduan.html` | ... |
+## Cara Menjalankan
 
-## Catatan alur data (Halaman 2 → 3)
+Buka `index.html` langsung di browser. Tidak perlu instalasi apa pun.
 
-Karena tiap halaman adalah file terpisah, data hasil perhitungan dikirim
-lewat `localStorage` dengan kunci `nutricheck_data`:
+## Cara Kerja
 
-```js
-// Halaman 2 (setelah validasi) – simpan lalu pindah halaman
-localStorage.setItem('nutricheck_data', JSON.stringify({ weight, heightCm, age, gender }));
-window.location.href = 'hasil.html';
+1. Pengguna mengisi jenis kelamin, berat (kg), tinggi (cm), dan usia di halaman Kalkulator.
+2. Data divalidasi lalu disimpan di `localStorage` dengan kunci `nutricheck_data`, kemudian pengguna diarahkan ke halaman Hasil.
+3. Halaman Hasil membaca data tersebut, menghitung BMI, dan menampilkan status gizi, indikator posisi, rekomendasi, serta rentang berat badan ideal.
+4. Hasil dapat dicetak lewat tombol **Cetak Laporan**.
 
-// Halaman 3 – baca saat halaman dibuka
-const data = JSON.parse(localStorage.getItem('nutricheck_data'));
+Format data yang disimpan:
+
+```json
+{ "weight": 65, "heightCm": 170, "age": 25, "gender": "pria" }
 ```
 
-Isi `gender` adalah `"pria"` atau `"wanita"`; `weight` dalam kg, `heightCm` dalam cm.
+## Rumus & Kategori BMI
 
-## Cara menjalankan
+```
+BMI = berat badan (kg) / (tinggi badan (m))²
+```
 
-Buka `index.html` langsung di browser (butuh internet untuk CDN Tailwind,
-Font Awesome, dan Google Fonts).
+| Kategori | Rentang BMI |
+|---|---|
+| Kurus | < 18.5 |
+| Normal | 18.5 – 24.9 |
+| Kelebihan berat badan | 25.0 – 27.0 |
+| Obesitas | > 27.0 |
 
-Rumus BMI: `berat (kg) / (tinggi (m))²`.
-Kategori: Kurus < 18.5 · Normal 18.5–24.9 · Kelebihan 25.0–27.0 · Obesitas > 27.0
+Rentang berat badan ideal dihitung dari BMI 18.5 – 24.9 sesuai tinggi badan pengguna.
+
+## Catatan
+
+Hasil perhitungan bersifat penilaian awal gizi mandiri dan bukan pengganti saran dokter atau tenaga kesehatan profesional.
