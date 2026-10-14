@@ -39,7 +39,7 @@ Membutuhkan koneksi internet agar CDN Tailwind, Font Awesome, dan Google Fonts t
 
 ## Cara Menjalankan
 
-Buka `index.html` langsung di browser. Tidak perlu instalasi apa pun.
+Buka `index.html` langsung di browser. Tidak perlu instalasi apa pun atau bisa gunakan ekstensi live-server.
 
 ## Cara Kerja
 
