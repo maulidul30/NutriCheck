@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCheck - Panduan BMI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Tailwind -->
+    <script src="js/tailwind-config.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS Kustom -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 glass-card shadow-sm transition-all duration-300 no-print" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="location.href='index.html'">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+                        <i class="fa-solid font-bold text-xl fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Nutri<span class="text-emerald-600">Check</span></span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Tabs -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="index.html" id="nav-beranda" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Beranda
+                    </a>
+                    <a href="kalkulator.html" id="nav-kalkulator" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Kalkulator BMI
+                    </a>
+                    <a href="hasil.html" id="nav-hasil" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/50">
+                        Hasil BMI
+                    </a>
+                    <a href="panduan.html" id="nav-panduan" class="nav-btn px-4 py-2 text-sm font-semibold rounded-xl transition-all text-emerald-600 bg-emerald-50 border border-emerald-200">
+                        Panduan BMI
+                    </a>
+                </nav>
+
+                <!-- Action Button Desktop -->
+                <div class="hidden md:flex items-center">
+                    <a href="kalkulator.html" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95">
+                        <i class="fa-solid fa-calculator mr-2"></i> Hitung Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-slate-600 hover:text-emerald-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2 shadow-lg" id="mobile-menu">
+            <a href="index.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Beranda
+            </a>
+            <a href="kalkulator.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Kalkulator BMI
+            </a>
+            <a href="hasil.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Hasil BMI
+            </a>
+            <a href="panduan.html" class="mobile-link w-full text-left px-3 py-2.5 rounded-lg text-base font-semibold text-emerald-600 bg-emerald-50 hover:bg-emerald-50 hover:text-emerald-600 flex items-center">
+                Panduan BMI
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section Panduan -->
+        <div class="gradient-bg pt-12 pb-16 md:pt-16 md:pb-20 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 border border-emerald-200 mb-4">
+                    <i class="fa-solid fa-book-medical mr-2"></i> Pusat Edukasi Kesehatan NutriCheck
+                </span>
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+                    Panduan Lengkap Indeks Massa Tubuh
+                </h1>
+                <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                    Pelajari dasar rumus BMI, standar kategori Kementerian Kesehatan RI, cara membaca hasil perhitungan Anda, serta batasan penggunaannya.
+                </p>
+            </div>
+        </div>
+
+        <!-- Konten Edukasi -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+
+            <!-- Bagian 1: Rumus BMI & Contoh Langkah Hitung -->
+            <section class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-square-root-variable"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Dasar Perhitungan</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Apa Itu BMI & Bagaimana Rumusnya?</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
+                    <strong>Indeks Massa Tubuh (BMI — <em>Body Mass Index</em>)</strong> adalah metode skrining antropometri sederhana yang digunakan di seluruh dunia untuk menilai proporsi berat badan seseorang terhadap tinggi badannya.
+                </p>
+
+                <!-- Box Rumus Matematis -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center my-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Rumus Resmi IMT / BMI</span>
+                    <div class="inline-block bg-white border border-slate-200 px-6 py-4 rounded-xl shadow-sm text-lg md:text-2xl font-extrabold text-emerald-600 font-mono">
+                        BMI = Berat Badan (kg) / [Tinggi Badan (m)]²
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 text-left max-w-lg mx-auto text-xs md:text-sm text-slate-600">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                            <div><strong>Berat Badan:</strong> Diukur dalam satuan kilogram (kg).</div>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                            <div><strong>Tinggi Badan:</strong> Diukur dalam satuan meter (m).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh Langkah Hitung -->
+                <div class="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-6">
+                    <h3 class="font-bold text-emerald-900 text-sm md:text-base mb-3 flex items-center">
+                        <i class="fa-solid fa-calculator mr-2 text-emerald-600"></i> Contoh Langkah Perhitungan Nyata:
+                    </h3>
+                    <p class="text-xs md:text-sm text-slate-700 mb-3">
+                        Misalkan seseorang memiliki berat badan <strong>65 kg</strong> dan tinggi badan <strong>170 cm</strong>:
+                    </p>
+                    <ol class="list-decimal list-inside text-xs md:text-sm text-slate-700 space-y-1.5 pl-1">
+                        <li>Konversi tinggi cm ke meter: <strong>170 cm ÷ 100 = 1,70 m</strong>.</li>
+                        <li>Kuadratkan tinggi badan: <strong>1,70 × 1,70 = 2,89 m²</strong>.</li>
+                        <li>Bagi berat dengan kuadrat tinggi: <strong>65 ÷ 2,89 = 22,49</strong> (dibulatkan menjadi <strong>22,5</strong>).</li>
+                        <li>Nilai BMI adalah <strong>22,5</strong> $\to$ Masuk kategori <strong>Normal (Ideal)</strong>.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Bagian 2: Tabel Kategori Kemenkes RI -->
+            <section class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-table-list"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-teal-600">Standar Rujukan Nasional</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Tabel Kategori BMI Standar Kemenkes RI</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
+                    Kementerian Kesehatan Republik Indonesia menyesuaikan batas ambang BMI dengan karakteristik populasi masyarakat Asia dan Indonesia:
+                </p>
+
+                <!-- Tabel Responsif -->
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left text-sm text-slate-700">
+                        <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-4">Kategori Status Gizi</th>
+                                <th class="p-4 text-center">Rentang Skor BMI</th>
+                                <th class="p-4">Potensi Risiko Kesehatan</th>
+                                <th class="p-4">Rekomendasi Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-700 border border-sky-200">
+                                        Kurus
+                                    </span>
+                                    <span class="block text-xs text-slate-400 mt-1">Kekurangan Berat Badan</span>
+                                </td>
+                                <td class="p-4 text-center font-extrabold text-sky-600 text-base">&lt; 18.5</td>
+                                <td class="p-4 text-xs text-slate-600">Anemia, daya tahan tubuh rendah, osteoporosis, defisiensi nutrisi.</td>
+                                <td class="p-4 text-xs text-slate-600">Tingkatkan asupan kalori padat nutrisi, perbanyak protein, dan latihan beban.</td>
+                            </tr>
+                            <tr class="bg-emerald-50/50 hover:bg-emerald-50">
+                                <td class="p-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                        Normal
+                                    </span>
+                                    <span class="block text-xs text-slate-400 mt-1">Berat Badan Ideal</span>
+                                </td>
+                                <td class="p-4 text-center font-extrabold text-emerald-600 text-base">18.5 – 24.9</td>
+                                <td class="p-4 text-xs text-slate-600">Risiko penyakit kardiovaskular dan metabolik paling rendah.</td>
+                                <td class="p-4 text-xs text-slate-600">Pertahankan gizi seimbang, cukup air putih, dan olahraga rutin minimal 150 menit/minggu.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 border border-amber-200">
+                                        Kelebihan BB
+                                    </span>
+                                    <span class="block text-xs text-slate-400 mt-1">Overweight (Tingkat Ringan)</span>
+                                </td>
+                                <td class="p-4 text-center font-extrabold text-amber-600 text-base">25.0 – 27.0</td>
+                                <td class="p-4 text-xs text-slate-600">Mulai ada risiko resistensi insulin, hipertensi ringan, nyeri sendi beban.</td>
+                                <td class="p-4 text-xs text-slate-600">Kontrol porsi makan, kurangi gula dan gorengan, perbanyak aktivitas kardio.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border border-rose-200">
+                                        Obesitas
+                                    </span>
+                                    <span class="block text-xs text-slate-400 mt-1">Kelebihan BB Tingkat Berat</span>
+                                </td>
+                                <td class="p-4 text-center font-extrabold text-rose-600 text-base">&gt; 27.0</td>
+                                <td class="p-4 text-xs text-slate-600">Risiko tinggi Diabetes Tipe 2, penyakit jantung, stroke, fatty liver.</td>
+                                <td class="p-4 text-xs text-slate-600">Konsultasi dokter/ahli gizi, terapkan defisit kalori terarah dan monitoring berkala.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Bagian 3: Batasan & Keterbatasan BMI -->
+            <section class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Penting Diketahui</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Batasan Penggunaan BMI (Keterbatasan Skrining)</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
+                    BMI tidak dapat membedakan antara massa otot dan massa lemak. Oleh karena itu, hasil BMI mungkin kurang akurat untuk kelompok berikut:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-dumbbell text-emerald-600 text-lg"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Atlet & Binaragawan</h4>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Massa otot padat yang berat dapat membuat skor BMI masuk kategori Obesitas, padahal kadar lemak tubuh sangat rendah.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-person-cane text-slate-600 text-lg"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Lansia (Lanjut Usia)</h4>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Penurunan massa otot alami (sarkopenia) membuat BMI tampak normal padahal persentase lemak relatif tinggi.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-person-pregnant text-rose-500 text-lg"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Ibu Hamil & Menyusui</h4>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Pertambahan berat badan janin dan cairan ketuban membuat rumus BMI umum tidak berlaku.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-children text-amber-500 text-lg"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Anak-anak & Remaja</h4>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Memerlukan kurva pertumbuhan khusus (BMI-for-age) sesuai tahapan usia perkembangan.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bagian 4: 4 Pilar Hidup Sehat -->
+            <section class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Gaya Hidup</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">4 Pilar Menjaga Berat Badan Ideal</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-5 bg-slate-50 rounded-2xl text-center">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Gizi Seimbang</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Terapkan prinsip Isi Piringku: 1/2 sayur & buah, 1/4 karbohidrat, 1/4 protein.</p>
+                    </div>
+
+                    <div class="p-5 bg-slate-50 rounded-2xl text-center">
+                        <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold">
+                            <i class="fa-solid fa-bottle-water"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Hidrasi Cukup</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Cukupi konsumsi 2 liter (8 gelas) air putih per hari dan hindari minuman manis.</p>
+                    </div>
+
+                    <div class="p-5 bg-slate-50 rounded-2xl text-center">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Aktivitas Fisik</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Olahraga rutin minimal 30 menit per hari, 3–5 kali per minggu.</p>
+                    </div>
+
+                    <div class="p-5 bg-slate-50 rounded-2xl text-center">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Tidur Teratur</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Istirahat cukup 7–8 jam per malam untuk menjaga metabolisme tubuh.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Box -->
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-xl shadow-emerald-500/10">
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Siap Mengetahui Status BMI Anda?</h3>
+                <p class="text-emerald-100 text-sm md:text-base max-w-xl mx-auto mb-6">
+                    Gunakan kalkulator NutriCheck sekarang untuk menghitung skor BMI dan estimasi berat badan ideal Anda dalam beberapa detik.
+                </p>
+                <a href="kalkulator.html" class="inline-flex items-center justify-center px-8 py-3.5 rounded-2xl text-emerald-700 bg-white hover:bg-emerald-50 font-bold text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-calculator mr-2"></i> Buka Kalkulator BMI
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-white pt-12 pb-8 border-t border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-4">
+
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight">Nutri<span class="text-emerald-400">Check</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed mb-4">
+                        Aplikasi kalkulator Indeks Massa Tubuh (BMI) interaktif untuk memantau status gizi secara praktis dan terstruktur.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Halaman Web</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
+                        <li><a href="kalkulator.html" class="hover:text-emerald-400 transition-colors">Kalkulator BMI</a></li>
+                        <li><a href="hasil.html" class="hover:text-emerald-400 transition-colors">Hasil BMI</a></li>
+                        <li><a href="panduan.html" class="hover:text-emerald-400 transition-colors">Panduan BMI</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Catatan Medis</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Hasil kalkulasi ini bertindak sebagai penilai awal gizi mandiri dan bukan sebagai pengganti saran klinis dokter profesional.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/common.js"></script>
+</body>
+</html>
