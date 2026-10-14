@@ -1,0 +1,48 @@
+/**
+ * NutriCheck — Styling Halaman Kalkulator BMI (Tugas Anggota 2 & Integrasi)
+ * File: css/bmi.css
+ */
+
+.font-sans {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+}
+
+.brand-icon-sm {
+  width: 24px;
+  height: 24px;
+  font-size: 0.8rem;
+}
+
+.icon-circle {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.max-w-500 {
+  max-width: 500px;
+}
+
+.form-control:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.2);
+}
+
+.empty-state-card {
+  border: 2px dashed #dee2e6 !important;
+  background-color: #fbfcfd;
+}
+
+@media (max-width: 991px) {
+  .empty-state-card {
+    padding: 2.5rem 1.5rem !important;
+  }
+}
